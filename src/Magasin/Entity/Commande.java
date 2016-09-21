@@ -6,6 +6,7 @@
 package Magasin.Entity;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -13,6 +14,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -20,29 +23,29 @@ import javax.persistence.Id;
  */
 @Entity
 public class Commande implements Serializable {
-    
+
     public enum Statut {
-            EN_COURS,
-            TERMINEE,
-            PAYE,
-            LIVREE
+        EN_COURS,
+        TERMINEE,
+        PAYE,
+        LIVREE
     }
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-   @Embedded
+    @Embedded
     private Adresse adresse;
     private String moyenDePaiement;
     private String modeDeLivraison;
     private float prixTotal;
     private float fraisDePort;
-    private Integer dateEtHeure;
-    private Integer dateLivraison;
-@Enumerated(EnumType.STRING)
-private Statut Statut;
-
-        
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateEtHeure;
+    @Temporal(TemporalType.DATE)
+    private Date dateLivraison;
+    @Enumerated(EnumType.STRING)
+    private Statut Statut;
 
     public Long getId() {
         return id;
@@ -78,4 +81,3 @@ private Statut Statut;
     }
 
 }
-
