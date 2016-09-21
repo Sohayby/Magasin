@@ -14,6 +14,9 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -34,9 +37,77 @@ public class Commande implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+     @ManyToOne //définit type de jointure
+    @JoinColumn(name = "client_id")
+     private Client client;
+    
     @Embedded
     private Adresse adresse;
     private String moyenDePaiement;
+
+    public Adresse getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse(Adresse adresse) {
+        this.adresse = adresse;
+    }
+
+    public String getMoyenDePaiement() {
+        return moyenDePaiement;
+    }
+
+    public void setMoyenDePaiement(String moyenDePaiement) {
+        this.moyenDePaiement = moyenDePaiement;
+    }
+
+    public String getModeDeLivraison() {
+        return modeDeLivraison;
+    }
+
+    public void setModeDeLivraison(String modeDeLivraison) {
+        this.modeDeLivraison = modeDeLivraison;
+    }
+
+    public float getPrixTotal() {
+        return prixTotal;
+    }
+
+    public void setPrixTotal(float prixTotal) {
+        this.prixTotal = prixTotal;
+    }
+
+    public float getFraisDePort() {
+        return fraisDePort;
+    }
+
+    public void setFraisDePort(float fraisDePort) {
+        this.fraisDePort = fraisDePort;
+    }
+
+    public Date getDateEtHeure() {
+        return dateEtHeure;
+    }
+
+    public void setDateEtHeure(Date dateEtHeure) {
+        this.dateEtHeure = dateEtHeure;
+    }
+
+    public Date getDateLivraison() {
+        return dateLivraison;
+    }
+
+    public void setDateLivraison(Date dateLivraison) {
+        this.dateLivraison = dateLivraison;
+    }
+
+    public Statut getStatut() {
+        return Statut;
+    }
+
+    public void setStatut(Statut Statut) {
+        this.Statut = Statut;
+    }
     private String modeDeLivraison;
     private float prixTotal;
     private float fraisDePort;
@@ -47,6 +118,7 @@ public class Commande implements Serializable {
     @Enumerated(EnumType.STRING)
     private Statut Statut;
 
+   
     public Long getId() {
         return id;
     }

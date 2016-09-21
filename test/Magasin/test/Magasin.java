@@ -16,16 +16,22 @@ import org.junit.Test;
  * @author admin
  */
 public class Magasin {
-
-    @Test
-    public void testeListeProduit() {
+//
+//    @Test
+//    public void testeListeProduit() {
+//        EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
+//        Categorie cat = em.find(Categorie.class, (long) 202);
+//        for (Produit p : cat.getProduits()) {
+//            System.out.println(p);
+    @Test    
+    public void testClientCommande(){
+    
         EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
-        Categorie cat = em.find(Categorie.class, (long) 202);
-        for (Produit p : cat.getProduits()) {
-            System.out.println(p);
-        }
+//        Categorie cat = em.find(Class, (long));
+//               
     }
 
+    
 //    @Test 
     public void Magasin() {
         EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
